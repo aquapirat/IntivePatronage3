@@ -1,0 +1,351 @@
+﻿{
+  "x-generator": "NSwag v12.0.8.0 (NJsonSchema v9.13.9.0 (Newtonsoft.Json v11.0.0.0))",
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Northwind Traders API",
+    "version": "1.0.0"
+  },
+  "consumes": [
+    "application/json-patch+json",
+    "application/json",
+    "text/json",
+    "application/*+json"
+  ],
+  "paths": {
+    "/api/Rooms/GetAll": {
+      "get": {
+        "tags": [
+          "Rooms"
+        ],
+        "operationId": "Rooms_GetAll",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/RoomListModel"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Rooms/Get/{id}": {
+      "get": {
+        "tags": [
+          "Rooms"
+        ],
+        "operationId": "Rooms_Get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/RoomDetailsModel"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Rooms/GetCalendar/{id}": {
+      "get": {
+        "tags": [
+          "Rooms"
+        ],
+        "operationId": "Rooms_GetCalendar",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/RoomDetailsModel"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Rooms/Create": {
+      "post": {
+        "tags": [
+          "Rooms"
+        ],
+        "operationId": "Rooms_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRoomCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "file"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Rooms/Update/{id}": {
+      "put": {
+        "tags": [
+          "Rooms"
+        ],
+        "operationId": "Rooms_Update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRoomCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "file"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Rooms/Delete/{id}": {
+      "delete": {
+        "tags": [
+          "Rooms"
+        ],
+        "operationId": "Rooms_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "file"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RoomListModel": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "rooms": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/RoomPreviewModel"
+            }
+          }
+        }
+      },
+      "RoomPreviewModel": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "roomId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "roomNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "roomCapacity": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "RoomDetailsModel": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "roomId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "roomNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "roomCapacity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reservationDates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Date"
+            }
+          }
+        }
+      },
+      "Date": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "dateId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "roomId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reservationDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CreateRoomCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "roomId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "roomNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "roomCapacity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reservationDates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Date"
+            }
+          }
+        }
+      },
+      "UpdateRoomCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "roomId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "roomNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "roomCapacity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reservationDates": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Date"
+            }
+          }
+        }
+      }
+    }
+  }
+}
