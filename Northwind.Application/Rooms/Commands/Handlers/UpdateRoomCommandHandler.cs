@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Northwind.Application.Exceptions;
+using Northwind.Application.Interfaces;
 using Northwind.Domain.Entities;
 using Northwind.Persistence;
 
@@ -11,10 +12,12 @@ namespace Northwind.Application.Rooms.Commands.Handlers
     class UpdateRoomCommandHandler : IRequestHandler<UpdateRoomCommand, Unit>
     {
         private readonly NorthwindDbContext _context;
+        private readonly INotificationService _notificationService; // Usage shown in CreateRoomCommandHandler
 
-        public UpdateRoomCommandHandler(NorthwindDbContext context)
+        public UpdateRoomCommandHandler(NorthwindDbContext context, INotificationService notificationService)
         {
             _context = context;
+            _notificationService = notificationService;
         }
 
         public async Task<Unit> Handle(UpdateRoomCommand request, CancellationToken cancellationToken)

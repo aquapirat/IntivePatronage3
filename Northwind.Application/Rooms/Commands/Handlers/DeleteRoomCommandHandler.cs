@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Northwind.Application.Exceptions;
+using Northwind.Application.Interfaces;
 using Northwind.Domain.Entities;
 using Northwind.Persistence;
 
@@ -13,10 +14,12 @@ namespace Northwind.Application.Rooms.Commands.Handlers
     class DeleteRoomCommandHandler : IRequestHandler<DeleteRoomCommand, Unit>
     {
         private readonly NorthwindDbContext _context;
+        private readonly INotificationService _notificationService;
 
-        public DeleteRoomCommandHandler(NorthwindDbContext context)
+        public DeleteRoomCommandHandler(NorthwindDbContext context, INotificationService notificationService)
         {
             _context = context;
+            _notificationService = notificationService;
         }
 
         public async Task<Unit> Handle(DeleteRoomCommand request, CancellationToken cancellationToken)
