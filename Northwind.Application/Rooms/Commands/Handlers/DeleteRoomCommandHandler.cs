@@ -14,7 +14,7 @@ namespace Northwind.Application.Rooms.Commands.Handlers
     class DeleteRoomCommandHandler : IRequestHandler<DeleteRoomCommand, Unit>
     {
         private readonly NorthwindDbContext _context;
-        private readonly INotificationService _notificationService;
+        private readonly INotificationService _notificationService; // Usage shown in CreateRoomCommandHandler
 
         public DeleteRoomCommandHandler(NorthwindDbContext context, INotificationService notificationService)
         {
